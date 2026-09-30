@@ -1,11 +1,11 @@
 package tn.esprit.mayssem_sallah_4ssa3.entité;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,4 +20,10 @@ public class agence {
         private String ville;
         private String adresse;
         private String telephone;
+
+    @OneToMany (mappedBy = "a")
+    private Set<employe> emp;
+
+    @OneToMany (mappedBy = "a")
+    private Set<vehicule> v;
 }

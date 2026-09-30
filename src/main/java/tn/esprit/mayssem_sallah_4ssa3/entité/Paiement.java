@@ -1,9 +1,6 @@
 package tn.esprit.mayssem_sallah_4ssa3.entité;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +8,8 @@ import tn.esprit.mayssem_sallah_4ssa3.enums.ModePaiement;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Set;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -22,5 +21,9 @@ public class Paiement {
     private BigDecimal montant;
     private LocalDate datePaiement;
     private ModePaiement modePaiement;
+
+    @ManyToOne
+    @JoinColumn(name = "idContrat")
+    private Contrat cont;
 }
 

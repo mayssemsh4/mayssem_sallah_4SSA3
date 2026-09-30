@@ -1,12 +1,12 @@
 package tn.esprit.mayssem_sallah_4ssa3.entité;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Set;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -16,4 +16,7 @@ public class Equipement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEquipement;
     private String libelle;
+
+    @ManyToMany(mappedBy = "equipements")
+    private Set<vehicule> v;
 }
